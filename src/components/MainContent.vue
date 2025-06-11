@@ -1,11 +1,13 @@
 <template>
   <section class="flex flex-col items-center justify-center md:justify-normal md:py-30 w-full h-screen bg-[#FFFDF6]">
-    <img
-      :src="photoUrl"
-      class="rounded-full w-[240px] h-[240px] border-8 border-[#F5ECD5] object-cover"
-      alt="Profile Picture"
-    />
-    <h1 class="text-4xl font-bold mt-15 md:mt-4">
+    <div class="relative">
+      <img
+        :src="photoUrl"
+        class="profile-image rounded-full w-[240px] h-[240px] border-8 border-[#F5ECD5] object-cover"
+        alt="Profile Picture"
+      />
+    </div>
+    <h1 class="text-4xl font-bold mt-15 md:mt-8">
       Hello, I'm
       <span class="relative">
         Ömer Buğra! <span class="absolute bottom-0 left-0 w-full h-[4px] bg-[#FFD70080] transform -rotate-2"></span>
@@ -51,6 +53,7 @@
     />
   </section>
 </template>
+
 <script setup>
 import SpeedDial from 'primevue/speeddial'
 import { ref, watch } from 'vue'
@@ -112,3 +115,54 @@ const items = ref([
   },
 ])
 </script>
+
+<style scoped>
+.profile-image {
+  transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+  border-color: #ffd700;
+  animation: borderAnimation 1.5s infinite;
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-color: #f5ecd5;
+  }
+  12.5% {
+    border-color: #ffb823;
+  }
+  25% {
+    border-color: #708a58;
+  }
+  37.5% {
+    border-color: #2d4f2b;
+  }
+  50% {
+    border-color: #2d4f2b;
+  }
+  62.5% {
+    border-color: #708a58;
+  }
+  75% {
+    border-color: #ffb823;
+  }
+  87.5% {
+    border-color: #fff1ca;
+  }
+  100% {
+    border-color: #f5ecd5;
+  }
+}
+
+:deep(.p-speeddial-mask) {
+  pointer-events: none;
+}
+
+:deep(.p-speeddial-button),
+:deep(.p-speeddial-list) {
+  pointer-events: auto;
+}
+</style>
