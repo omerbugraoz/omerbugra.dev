@@ -1,5 +1,7 @@
-<template></template>
+<template>
+  <MainContent />
+</template>
 
-<script setup></script>
-
-<style scoped></style>
+<script setup>
+import MainContent from './components/MainContent.vue'  
+</script>
