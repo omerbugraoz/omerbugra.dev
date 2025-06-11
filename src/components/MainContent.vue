@@ -32,23 +32,39 @@
       style="position: absolute; bottom: 35%"
       showIcon="pi pi-link"
       hideIcon="pi pi-times"
-      v-model:visible="isSpeedDialOpen"
+      @show="isSpeedDialOpen = true"
+      @hide="isSpeedDialOpen = false"
       :buttonProps="{
-        label: speedDialLabel,
+        label: isSpeedDialLabel,
         severity: 'secondary',
         rounded: true,
         raised: true,
         'aria-label': 'Share',
         class: 'p-button-text',
+        onMouseenter: () => {
+          if (!isSpeedDialOpen) isSpeedDialLabel = 'Links'
+        },
+        onMouseleave: () => {
+          if (!isSpeedDialOpen) isSpeedDialLabel = ''
+        },
       }"
     />
   </section>
 </template>
 <script setup>
 import SpeedDial from 'primevue/speeddial'
-import { ref, computed } from 'vue'
+import { ref, watch } from 'vue'
 
 const photoUrl = new URL('../assets/pp.jpeg', import.meta.url).href
+
+const isSpeedDialOpen = ref(false)
+const isSpeedDialLabel = ref('')
+
+watch(isSpeedDialOpen, (newValue) => {
+  if (newValue) {
+    isSpeedDialLabel.value = ''
+  }
+})
 
 const items = ref([
   {
@@ -92,7 +108,4 @@ const items = ref([
     },
   },
 ])
-
-const isSpeedDialOpen = ref(false)
-const speedDialLabel = computed(() => (isSpeedDialOpen.value ? '' : 'Links'))
 </script>
