@@ -28,7 +28,7 @@
       type="semi-circle"
       direction="down"
       :model="items"
-      :radius="80"
+      :radius="120"
       style="position: absolute; bottom: 35%"
       showIcon="pi pi-link"
       hideIcon="pi pi-times"
@@ -41,7 +41,6 @@
         'aria-label': 'Share',
         class: 'p-button-text',
       }"
-      :tooltipOptions="{ position: 'bottom' }"
     />
   </section>
 </template>
@@ -52,6 +51,22 @@ import { ref, computed } from 'vue'
 const photoUrl = new URL('../assets/pp.jpeg', import.meta.url).href
 
 const items = ref([
+  {
+    label: 'Phone',
+    icon: 'pi pi-phone',
+    tooltip: 'Call',
+    command: () => {
+      window.open('tel:+905067907173', '_blank')
+    },
+  },
+  {
+    label: 'Email',
+    icon: 'pi pi-envelope',
+    tooltip: 'Send Email',
+    command: () => {
+      window.open('mailto:oomerbugraoz@gmail.com', '_blank')
+    },
+  },
   {
     label: 'CV',
     icon: 'pi pi-file-pdf',
