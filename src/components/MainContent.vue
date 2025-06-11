@@ -20,6 +20,7 @@
         <span class="absolute bottom-0 left-0 w-full h-[4px] bg-[#FFD70080] transform -rotate-2"></span>
       </span>
       products
+      <br v-if="isMobile" />
       <span class="relative">
         grow with seamless user experiences.
         <span class="absolute bottom-0 left-0 w-full h-[4px] bg-[#FFD70080] transform -rotate-2"> </span>
